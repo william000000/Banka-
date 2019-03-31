@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/tableStyle.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/dashstyle.css">
+  <link rel="stylesheet" type="text/css" href="../css/styl.css">
+  
+	<meta name="viewport" content="width=device-width initial-scale=1">
+
+</head>
+<body>
+	<div class="body">
+		<div class="sidebar">
+			<div class="profile">
+				<img src="../img/PIK.jpg" alt="profile"/>
+				<div class="title">Willy Boris </div>
+			</div>
+			<ul class="navbar">
+				<a href="dashCashier.html"><li>List of Accounts</li></a>
+				<a href="transactionDebit.html"><li>Debit a User Account</li></a>
+				<a href="transactionCredit.html"><li>Credit a User Account</li></a>
+				
+			</ul>
+		</div>
+		<div class="content">
+			<div class="bar">
+				<div class="logo">
+					BANKA
+				</div>
+				<div class="logoutbutton"><a href="login.html"><b>Logout</b></a></div>
+			</div>
+			<div class="container">
+          <h1>Bank Account Transaction</h1>
+
+          <hr>
+          <label for="id"><b>ID</b></label>
+          <input type="text" placeholder="Enter id" name="id" required>
+      
+          <label for="createdOn"><b>CreatedOn</b></label>
+          <input type="date" placeholder="Enter When is createdOn" name="createdOn" required>
+      
+          <label for="accountNumber"><b>Account Number</b></label>
+          <input type="text" placeholder="Enter Your Account Number" name="accountNumber" required>
+      
+          <label for="cashier"><b>Cashier Id</b></label>
+          <input type="text" placeholder="Enter Id of Cashier who consumated" name="cashier" required>
+      
+      
+          <label for="amount"><b>Amount</b></label>
+          <input type="text" placeholder="Enter an Amount" name="amount" required>
+      
+          <label for="oldAmount"><b>Old Balance</b></label>
+          <input type="text" placeholder="Enter Old amount" name="oldAmount" required>
+      
+          <label for="newAmount"><b>New Balance</b></label>
+          <input type="text" placeholder="Enter New amount" name="newAmount" required>
+      
+      
+          <hr>
+      
+         <button type="submit" class="registerbtn">Credit User</button>
+         <button type="submit" class="registerbtn">Debit User</button>
+				
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+  
