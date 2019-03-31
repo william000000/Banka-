@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/tableStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/styl.css">
+    <link rel="stylesheet" type="text/css" href="../css/dashstyle.css">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+
+</head>
+<body>
+    <div class="body">
+            <div class="sidebar">
+                    <div class="profile">
+                        <img src="../img/PIK.jpg" alt="profile"/>
+                        <div class="title">Willy Boris </div>
+                    </div>
+                    <ul class="navbar">
+                            <a href="UserBankAccount.html"><li>View Bank Account Profile </li></a>
+                            <a href="UserCreateAccountAccount.html"><li>Create Bank Account</li></a>
+                            <a href="userAccountTransaction.html"><li>View Account Transaction</li></a>
+                        
+                    </ul>
+                </div>
+        <div class="content">
+            <div class="bar">
+                <div class="logo">
+                    BANKA
+                </div>
+                <div class="logoutbutton"><a href="login.html"><b>Logout</b></a></div>
+            </div>
+             <form action="dash.html" class="register-form">
+  <div class="container">
+    <h1>Create Bank Account</h1>
+
+    <hr>
+    <label for="id"><b>ID</b></label>
+    <input type="text" placeholder="Enter id" name="id" required>
+
+    <label for="accountNumber"><b>Account Number</b></label>
+    <input type="text" placeholder="Enter Your Account Number" name="accountNumber" required>
+
+    <label for="createdOn"><b>CreatedOn</b></label>
+    <input type="date" placeholder="Enter When is createdOn" name="createdOn" required>
+
+    <label for="owner"><b>Owner</b></label>
+    <input type="text" placeholder="Enter Id of Owner" name="owner" required>
+
+    <label for="type"><b>Type</b></label>
+     <select required>
+      <option>Saving</option>
+      <option>Currentr</option>
+     </select>
+
+    <label for="status"><b>Status</b></label>
+    <select>
+      <option>Draft</option>
+      <option>Active</option>
+      <option>Dormant</option>
+    </select>
+
+    <label for="amount"><b>Amount</b></label>
+    <input type="text" placeholder="Enter an Amount" name="amount" required>
+
+    <hr>
+
+   <button type="submit" class="registerbtn">Register</button>
+   <a href="dashUser.html"><b>Back To Home</b></a>
+    
+
+</div>
+
+</form> 
+        </div>
+    </div>
+</body>
+</html>
