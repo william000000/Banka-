@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 * {box-sizing: border-box}
 
 /*adding photo in baground*/
 body{
   background: url(../img/backgroung.jpg);
+  font-family: 'Roboto',sans-serif;
 }
 
 .container {
@@ -44,6 +47,7 @@ hr {
   opacity:1;
 }
 
+
 a {
   color: dodgerblue;
 }
@@ -62,5 +66,6 @@ a {
 label,p,h1{
   color: white;
 }
+
 
 

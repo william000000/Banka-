@@ -16,6 +16,7 @@
                         <div class="title">Willy Boris </div>
                     </div>
                     <ul class="navbar">
+                            <a href="dashUser.html"><li>List of Accounts</li></a>
                             <a href="UserBankAccount.html"><li>View Bank Account Profile </li></a>
                             <a href="UserCreateAccountAccount.html"><li>Create Bank Account</li></a>
                             <a href="userAccountTransaction.html"><li>View Account Transaction</li></a>
@@ -24,51 +25,45 @@
                 </div>
         <div class="content">
             <div class="bar">
-                <div class="logo">
-                    BANKA
-                </div>
+                    <div class="logo" style="float: left;">
+                            <img src="../img/blogo.jpg" width="120" height="78" alt="profile" style="display:block"/>
+                        </div>
                 <div class="logoutbutton"><a href="login.html"><b>Logout</b></a></div>
             </div>
-             <form action="dash.html" class="register-form">
-  <div class="container">
-    <h1>Create Bank Account</h1>
-
-    <hr>
-    <label for="id"><b>ID</b></label>
-    <input type="text" placeholder="Enter id" name="id" required>
-
-    <label for="accountNumber"><b>Account Number</b></label>
-    <input type="text" placeholder="Enter Your Account Number" name="accountNumber" required>
-
-    <label for="createdOn"><b>CreatedOn</b></label>
-    <input type="date" placeholder="Enter When is createdOn" name="createdOn" required>
-
-    <label for="owner"><b>Owner</b></label>
-    <input type="text" placeholder="Enter Id of Owner" name="owner" required>
-
-    <label for="type"><b>Type</b></label>
-     <select required>
-      <option>Saving</option>
-      <option>Currentr</option>
-     </select>
-
-    <label for="status"><b>Status</b></label>
-    <select>
-      <option>Draft</option>
-      <option>Active</option>
-      <option>Dormant</option>
-    </select>
-
-    <label for="amount"><b>Amount</b></label>
-    <input type="text" placeholder="Enter an Amount" name="amount" required>
-
-    <hr>
-
-   <button type="submit" class="registerbtn">Register</button>
-   <a href="dashUser.html"><b>Back To Home</b></a>
-    
-
-</div>
+             <form action="dashUser.html" class="register-form">
+                    <div class="container">
+                            <h1>Create Bank Account</h1>
+                        
+                            <hr>
+                        
+                        
+                            <label for="owner"><b>Owner</b></label>
+                            <input type="text" placeholder="Enter Id of Owner" name="owner" required>
+                        
+                            <label for="type"><b>Type</b></label>
+                             <select required>
+                              <option>Saving</option>
+                              <option>Currentr</option>
+                             </select>
+                        
+                            <label for="status"><b>Status</b></label>
+                            <select>
+                              <option>Draft</option>
+                              <option>Active</option>
+                              <option>Dormant</option>
+                            </select>
+                        
+                            <label for="amount"><b>Amount</b></label>
+                            <input type="text" placeholder="Enter an Amount" name="amount" required>
+                        
+                            <hr>
+                        
+                           <button type="submit" class="registerbtn">Register</button>
+                           <a href="dashUser.html"><b>Back To Home</b></a>
+                            
+                        
+                        </div>
+  
 
 </form> 
         </div>
