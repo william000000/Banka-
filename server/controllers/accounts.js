@@ -99,6 +99,22 @@ class AccountController{
             data: response,
         });
     }
+
+    static delete(req, res){
+        const account = accounts.find(account=>account.accountNumber===parseInt(req.params.accountNumber));
+        if(!account){
+            return res.status(400).send({
+                status:400,
+                error:"Account not found"
+            });
+        }
+        const index = accounts.indexOf(account);
+        accounts.splice(index,1);
+            return res.status(200).send({
+                status:200,
+                error:"Account successfully deleted"
+            });
+    }
 }
 
 export default AccountController;
