@@ -6,7 +6,7 @@ let accounts=[
         owner : 1 , 
         type : "Savings" , 
         status :"active",
-        balance :0.0 ,
+        balance :3000.0 ,
     },
     {
         id : 2 ,
