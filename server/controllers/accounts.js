@@ -67,12 +67,13 @@ class AccountController{
         const amount = request.body.amount;
         const oldBalance = account.balance;
         if(oldBalance<amount){
-            res.status(400).send({
+            return res.status(400).send({
                 status:400,
                 error:"Insufficient Balance",
             })
         }
         const newBalance = oldBalance - amount;
+        console.log(newBalance);
         account.balance = newBalance;
         const cashier = 1;
         const transaction = {
@@ -108,12 +109,31 @@ class AccountController{
                 error:"Account not found"
             });
         }
-        const index = accounts.indexOf(account);
-        accounts.splice(index,1);
-            return res.status(200).send({
-                status:200,
-                error:"Account successfully deleted"
-            });
+        const {accountNumber}=req.params;
+        //const accountNumber=req.params.accountNumber;
+
+        
+        const newAccounts=accounts.filter(account=>account.accountNumber!==parseInt(accountNumber));
+
+
+        return res.status(200).send({
+            status:200,
+            data:newAccounts
+        });
+    }
+
+    static whatever(req,res){
+        const {accountNumber}=req.params;
+        //const accountNumber=req.params.accountNumber;
+
+
+        const newAccounts=accounts.filter(account=>account.accountNumber!==accountNumber);
+        accounts=newAccounts;
+
+        return res.status(200).send({
+            status:200,
+            error:"Account successfully deleted"
+        });
     }
 }
 
