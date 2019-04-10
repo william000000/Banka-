@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/app.js",
-    "dev":"nodemon --exec babel-node server/app.js"
+    "start": "babel-node server/app.js",
+    "dev": "nodemon --exec babel-node server/app.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
