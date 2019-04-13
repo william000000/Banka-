@@ -122,19 +122,51 @@ class AccountController{
         });
     }
 
-    static whatever(req,res){
-        const {accountNumber}=req.params;
-        //const accountNumber=req.params.accountNumber;
-
-
-        const newAccounts=accounts.filter(account=>account.accountNumber!==accountNumber);
-        accounts=newAccounts;
-
-        return res.status(200).send({
+    static credit(request, res){
+        const account = accounts.find(account=>account.accountNumber===parseInt(request.params.accountNumber));
+        if(!account){
+            return res.status(400).send({
+                status:400,
+                error:"Account not found"
+            });
+        }
+        const amount = request.body.amount;
+        const oldBalance = account.balance;
+        if(0>amount){
+            return res.status(400).send({
+                status:400,
+                error:"your Amount is not allowed!",
+            })
+        }
+        const newBalance = parseFloat(oldBalance) + parseFloat(amount);
+        console.log(newBalance);
+        account.balance = newBalance;
+        const cashier = 1;
+        const transaction = {
+            id: transactions.length + 1,
+            createdOn: "12/05/2019",
+            type: "credit",
+            accountNumber: account.accountNumber,
+            cashier,
+            amount,
+            oldBalance,
+            newBalance,
+        };
+        transactions.push(transaction);
+        const response = {
+            transactionId: transaction.id,
+            accountNumber: account.accountNumber,
+            amount,
+            cashier,
+            transactionType: "credit",
+            accountBalance: newBalance,
+        };
+        res.status(200).send({
             status:200,
-            error:"Account successfully deleted"
+            data: response,
         });
     }
+
 }
 
 export default AccountController;
