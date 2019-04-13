@@ -12,9 +12,9 @@ class AccountController{
               email:singleUser.email,
               owner: singleUser.id,
               type:req.body.type,
-              openingBalance:parseFloat(req.body.amount) || 0.0,
               balance:parseFloat(req.body.amount) || 0.0,
               status:'active',
+              createdOn:new Date()
           }
           accounts.push(newAccount);
           res.status(201).send({
