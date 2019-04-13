@@ -4,8 +4,11 @@
 
 /*adding photo in baground*/
 body{
-  background: url(../img/backgroung.jpg);
+  background: url(../img/homepik.jpg)no-repeat center fixed;
   font-family: 'Roboto',sans-serif;
+
+  background-size: cover;
+
 }
 
 .container {
@@ -13,14 +16,16 @@ body{
 }
 
 /* width input fields */
-input[type=text], input[type=password],input[type=date], input[type=email],select{
+input[type=text], input[type=password],input[type=date], input[type=email],select,option{
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
+  border-bottom: 1px solid #fff;
   background: #f1f1f1;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 input[type=text]:focus, input[type=password]:focus,input[type=email]:focus,input[type=date]:focus,option:focus,input[type=radio]:focus{
@@ -34,7 +39,7 @@ hr {
 }
 
 .registerbtn {
-  background-color: #4CAF50;
+  background-color: rgb(73, 173, 77);
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -43,6 +48,7 @@ hr {
   width: 100%;
   opacity: 0.9;
   border-radius: 20px;
+  font-size: 16px;
 }
 
 .registerbtn:hover {
@@ -50,8 +56,14 @@ hr {
 }
 
 
-a {
-  color: dodgerblue;
+p a {
+  color:rgb(19, 212, 154);
+  text-decoration: none;
+	font-size: 16px;
+	line-height: 20px;
+}
+p a:hover{
+  color: #d6b143;;
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
@@ -67,6 +79,9 @@ a {
 }
 label,p,h1{
   color: white;
+}
+h1{
+  text-align: center;
 }
 
 
