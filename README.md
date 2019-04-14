@@ -23,10 +23,13 @@ deposit money.
 - Postman
 
 ## SetUp Project to get Started
-- Clone my repo (#https://github.com/william000000/Banka-)
-- install all dependencies using (#npm install)
-- Start Server (#npm run dev)
-- Run Postman to check my API Endpoint on (#localhost:3000) 
+- Clone my repo https://github.com/william000000/Banka-
+- install all dependencies using 
+```npm install```
+- Start Server 
+```npm run dev```
+- Run Postman to check my API Endpoint on 
+```localhost:3000``` 
 
 ## Use these method and path to test my API Endpoint
 
@@ -50,4 +53,4 @@ deposit money.
 - HTML
 - CSS
 
-## Author Willy Boris
+## Author: Willy Boris
