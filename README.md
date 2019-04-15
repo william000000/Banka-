@@ -23,7 +23,7 @@ deposit money.
 - Postman
 
 ## SetUp Project to get Started
-- Clone my repo https://github.com/william000000/Banka-
+- Clone my repo https://william000000.github.io/Banka-/UI/index.html
 - install all dependencies using 
 ```npm install```
 - Start Server 
