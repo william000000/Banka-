@@ -11,6 +11,7 @@ html{
 			height: 100%;
 			margin: 0px;
 			font-family: 'Roboto',sans-serif;
+			
 		}
 		.body{
 			width: 100%;
@@ -28,6 +29,7 @@ html{
 		.content{
 			width: 80%;
 			height: 100%;
+			color: black;
 		}
 		.sidebar .navbar{
 			margin: 0px;
@@ -108,7 +110,7 @@ html{
 		}
 
 		
-		p{	text-align: center; font-size: 30px; color: white;}
+		p{	text-align: center; font-size: 30px; color:black;}
 
 		/* body{
 			background: url(../img/homepik.jpg)no-repeat center fixed;
@@ -150,4 +152,12 @@ html{
 			width:auto;
 			overflow: scroll;
 		}
+	}
+
+	#modalTable{
+		display: none;
+		position: absolute;
+		top: 40%;
+		width: 70%;
+		margin-left:25%;
 	}
