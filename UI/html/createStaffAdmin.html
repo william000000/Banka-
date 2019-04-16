@@ -5,12 +5,20 @@
 	<link rel="stylesheet" type="text/css" href="../css/tableStyle.css"/>
     <link rel="stylesheet" type="text/css" href="../css/dashstyle.css">
     <link rel="stylesheet" type="text/css" href="../css/styl.css">
-	<meta name="viewport" content="width=device-width initial-scale=1">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <script src="../js/navbar.js"></script>
 
 </head>
 <body>
 	<div class="body">
-		<div class="sidebar">
+            <a href="#" onclick="toogleNav()" class="navbutton">
+                    <svg width="30" height="30">
+                        <path d="M0,5 30,5" stroke="#FFF" stroke-width="5"/>
+                        <path d="M0,14 30,14" stroke="#FFF" stroke-width="5"/>
+                        <path d="M0,23 30,23" stroke="#FFF" stroke-width="5"/>
+                    </svg>
+            </a>
+		<div class="sidebar" id="sidebar"> 
 			<div class="profile">
 				<img src="../img/PIK.jpg" alt="profile"/>
 				<div class="title">Willy Boris </div>
