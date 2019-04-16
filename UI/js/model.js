@@ -9,3 +9,7 @@ function display() {
    const close= document.getElementById("close");
 
 close.addEventListener('click', disappear);
+function toogleNav(){
+  let navbar = document.getElementById("navbar");
+  navbar.style.display=navbar.style.display==="none"?"block":"none";
+}
