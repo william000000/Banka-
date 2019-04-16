@@ -15,8 +15,7 @@
 				<div class="title">Willy Boris </div>
 			</div>
 			<ul class="navbar">
-				<a href="dashUser.html"><li>List of Accounts</li></a>
-                <a href="UserBankAccount.html"><li>View Bank Account Profile </li></a>
+			
                 <a href="UserCreateAccountAccount.html"><li>Create Bank Account</li></a>
                 <a href="userAccountTransaction.html"><li>View Account Transaction</li></a>
 				
@@ -28,7 +27,7 @@
 
 				<div class="logoutbutton"><a href="login.html"><b>Logout</b></a></div>
 			</div>
-			<div class="container">
+			<div class="container" id="accountList">
 				<p><b><u>Account List</u></b></p>
 				<br>
 				<table>
@@ -41,13 +40,13 @@
 				
 					</tr>
 					
-					<tr onclick="window.location='table.html';">
+					<tr onclick="display()">
 						<td> 23</td>
 						<td> 1000008334</td>
 						<td> 30000</td>
 						<td> Savings</td>
 						<td> 14/04/2019</td>
-						<a href="table.html"></a>
+						
 					</tr>
 						
 						</table>
@@ -58,6 +57,33 @@
 
 			</div>
 		</div>
+
+		<div class="container" id="modalTable"> 
+				<div id="close"><span>&times;</span></div>
+				<table>
+						<tr>
+							<th> ID</th>
+							<th> Account Number</th>
+							<th> CreatedOn</th>
+							<th> Owner</th>
+							<th> Type</th>
+							<th> Status</th>
+							<th> Balance</th>
+						</tr>
+						<tr>
+							<td> 23</td>
+							<td> 1000008334</td>
+							<td> 20/03/2019</td>
+							<td> 23</td>
+							<td> Saving</td>
+							<td> Active</td>
+							<td> 1000000</td>
+						</tr>
+					
+					</table>           
+
+</div>
 	</div>
+	<script src="../js/model.js"></script>
 </body>
 </html>
