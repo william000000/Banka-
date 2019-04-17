@@ -4,7 +4,20 @@ import transactions from "../models/transactions";
 class AccountController{
     static create(req,res){
       const singleUser=users.find(user=>user.email===req.body.email);
-      if(singleUser){
+      if(!req.body.email){
+        res.status(400).send({
+            status:400,
+            error:"Insert email"
+        })
+
+      }
+      else if(!req.body.type){
+        res.status(400).send({
+            status:400,
+            error:"enter the type of your bank account"
+        })
+      }
+      else if(singleUser){
           const newAccount={
               accountNumber:accounts.length+1,
               firstname:singleUser.firstname,
@@ -17,8 +30,8 @@ class AccountController{
               createdOn:new Date()
           }
           accounts.push(newAccount);
-          res.status(201).send({
-              status:201,
+          res.status(200).send({
+              status:200,
               data:newAccount
           })
       }
