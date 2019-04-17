@@ -20,9 +20,10 @@ describe("Authentication tests",()=>{
         }).end((err,res)=>{
             res.should.have.status(200);
             res.body.should.be.an("object");
+            done();
         })
 
-        done();
+        
     });
 
     it("Should not be able to login",(done)=>{
@@ -32,8 +33,9 @@ describe("Authentication tests",()=>{
         })
         .end((err,res)=>{
             res.should.has.status(400);
+            done();
         });
-        done();
+        
     })
 
     
