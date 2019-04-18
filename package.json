@@ -4,7 +4,7 @@
   "description": "Banking system",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha --require @babel/register  ./server/tests/ --exit",
+    "test": "nyc --reporter=text mocha --require @babel/register  ./server/tests/ --timeout 10000 --exit",
     "start": "babel-node server/app.js",
     "dev": "nodemon --exec babel-node server/app.js",
     "coverage":"nyc report --reporter=test-lcov | coveralls"
