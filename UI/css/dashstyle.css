@@ -29,18 +29,23 @@ html{
 		}
 		.sidebar{
 			width: 20%;
+			float: left;
 			height: 180%;
 			background: rgb(240, 240, 240);
 			border-right: 0.5px solid rgba(0, 0, 0, 0.5);
+			position: absolute;
 		}
 		.content{
 			width: 80%;
 			height: 100%;
+			margin-left: 20%;
 			color: black;
+			margin-right: 0;
 		}
 		.sidebar .navbar{
 			margin: 0px;
 			padding: 0px;
+			height: 100vh;
 		}
 		.sidebar .navbar a {
 			text-decoration: none;
@@ -143,17 +148,24 @@ html{
 		padding: 12px;
 		text-decoration: none;
 	}
+	#underButtonLink:hover{
+		
+			color: #d6b143;
+	 }
 	@media(max-width:568px){
-		.body{
-			flex-direction: column;
+		#menu{
+			display: block !important;
+		}
+		.group{
+			width: 100%;
 		}
 		.sidebar{
-			width: 100%;
-			height: auto;
+			display: none;
 		}
 		.content{
 			width: 100%;
-			height: auto;
+			margin-left: 0%;
+			overflow: auto;
 		}
 		table{
 			width: auto;
@@ -161,13 +173,14 @@ html{
 		.container{
 			width: 100%;
 			box-sizing: border-box;
-			overflow: scroll;
+			height: 180%;
+			overflow: auto;
 		}
 		#modalTable{
 			overflow: scroll;
 			margin: 10px !important;
 			width: 100% !important;
-			margin-top: 200px !important;
+			margin-top: 10px !important;
 		}
 		.sidebar{
 			display: none;
@@ -175,9 +188,9 @@ html{
 		.logoutbutton{
 			margin: 10px !important;
 		}
-		.bar{
+		/* .bar{
 			height: 47px !important;
-		}
+		} */
 		.navbutton{
 			display: block;
 		}
@@ -185,8 +198,80 @@ html{
 
 	#modalTable{
 		display: none;
-		position: absolute;
-		top: 40%;
+		position: relative;
+		top: 10%;
 		width: 70%;
-		margin-left:25%;
+		margin-left: 18%;
+	}
+
+	.group{
+		padding: 10px;
+		margin-bottom: 20px;
+		width: 60%;
+	}
+	.btnn{
+		margin:20px;
+		width: 40%;
+		outline: none;
+		font-weight: 700;
+		font-size: 14pt;
+	}
+	.btn-good{
+		background: rgb(45, 121, 45);
+	}
+
+	.btn-good:hover{
+		background: green;
+		color: white;
+	}
+	.btn-bad{
+		background: rgba(155, 28, 6, 0.404);
+		color: rgb(255, 255, 255);
+	}
+	.btn-bad:hover{
+		background: rgb(155, 28, 6);
+		color: rgb(255, 255, 255);
+	}
+	.input{
+		display: block;
+		text-align: center;
+		padding: 10px;
+		width: 70%;
+		font-size: 18px;
+		margin-left: 10%;
+
+	}
+	.label{
+		display: block;
+		margin-right: 10px;
+		font-weight: bold;
+		margin-left: 10%;
+	}
+	#close{
+		float: right;
+		border-radius: 300px;
+		background: gray;
+		color: white;
+		font-size: 15pt;
+		font-weight: 800;
+		/* padding: 10px; */
+	}
+	#close:hover{
+		background: rgb(121, 87, 87);
+		color: black;
+	}
+	#btn-position{		
+		margin-left: 30%;
+	}
+	
+	.min{
+		margin: 30px 0 0px 20px;
+		cursor: pointer;
+	}
+	.min:hover{
+		background: white;
+		border-radius: 200px;
+	}
+	#menu{
+		display: none;
 	}
