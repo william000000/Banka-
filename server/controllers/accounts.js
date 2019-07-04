@@ -148,7 +148,7 @@ class AccountController{
         if(0>amount){
             return res.status(400).send({
                 status:400,
-                error:"your Amount is not allowed!",
+                error:"your Amount is not allowed here!",
             })
         }
         const newBalance = parseFloat(oldBalance) + parseFloat(amount);
@@ -177,7 +177,7 @@ class AccountController{
         res.status(200).send({
             status:200,
             data: response,
-        });
+        });   
     }
 
 }
