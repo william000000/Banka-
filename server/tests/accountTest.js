@@ -1,6 +1,6 @@
 import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from './../app';
+import chaiHttp from './node_modules/chai-http';
+import server from '../app';
 
 chai.use(chaiHttp);
 chai.should();
@@ -96,7 +96,7 @@ describe('Bank account testing', () => {
       });
   })
 
-  it('should not be able to activate or deactivate when user not exists', (done) => {
+  it('should not be able to activate or deactivate when user not exist', (done) => {
     const newAccount = {
       id: -2
     };

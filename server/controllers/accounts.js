@@ -9,7 +9,7 @@ class AccountController {
         const singleUser = users.find(user => user.email === req.body.email);
        
         if (singleUser) {
-            console.log("hhe")
+           
             const newAccount = {
                 accountNumber: accounts.length + 1,
                 firstname: singleUser.firstname,
@@ -21,8 +21,6 @@ class AccountController {
                 status: 'active',
                 createdOn: new Date()
             }
-    
-            accounts.push(newAccount);
             res.status(201).send({
                 status: 201,
                 data: newAccount

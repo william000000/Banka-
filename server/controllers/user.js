@@ -16,13 +16,19 @@ class AuthController {
 
         else if (singleUser) {
             const token = jwt.sign({ id: singleUser.id, email: singleUser.email, isAdmin: singleUser.isAdmin }, process.env.secretkey);
-
-            res.status(200).send({
+            console.log(singleUser.email);
+            return res.status(200).send({
                 status: 200,
-                token: token,
-                data: singleUser
+                data: {
+                    token: token,
+                    email: singleUser.email,
+                    firstname: singleUser.firstname,
+                    lastname: singleUser.lastname,
+                    type: singleUser.type,
+                    isAdmin: singleUser.isAdmin
+                }
             });
-        } else return res.status(401).json({ status: 401, error: "invalid user account" })
+        } else return res.status(401).json({ status: 401, error: "invalid user account" });
 
 
     }
@@ -57,10 +63,15 @@ class AuthController {
         res.status(201).send({
             status: 201,
             data: {
-                token,
-                newUser
+                token: token,
+                User_id: newUser.id,
+                email: newUser.email,
+                firstname: newUser.firstname,
+                lastname: newUser.lastname,
+                type: newUser.type,
+                isAdmin: newUser.isAdmin
             }
         })
-}
+    }
 }
 export default AuthController;

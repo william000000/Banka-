@@ -1,10 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
-
+import dotenv from "dotenv";
 import authRoute from "./routes/user";
 import accountRoute from "./routes/accounts";
+import controllerDb from "./controllers/userdb";
 
-const app=express();
+dotenv.config();
+
+const app = express();
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
