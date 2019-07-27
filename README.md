@@ -44,6 +44,7 @@ deposit money.
 | POST        | /api/v1/accounts/:accountNumber/debit      | To Debit Bank Account         |
 | POST        | /api/v1/accounts/:accountNumber/credit     | To Credit Bank Account        |
 | DELETE      | /api/v1/accounts/:accountNumber            | To Delete Bank Account        |
+| GET         | /api/v1/accounts/all                       | To get all bank accounts      |
 --------------------------------------------------------------------------------------------
 
 ## Technologies Used
