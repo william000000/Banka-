@@ -1,92 +1,95 @@
 import users from "../models/users";
 import accounts from "../models/accounts";
 import transactions from "../models/transactions";
-class AccountController{
-    static create(req,res){
-      const singleUser=users.find(user=>user.email===req.body.email);
-      if(!req.body.email){
-        res.status(400).send({
-            status:400,
-            error:"Insert email"
-        })
+import jwt from "jsonwebtoken";
 
-      }
-      else if(!req.body.type){
-        res.status(400).send({
-            status:400,
-            error:"enter the type of your bank account"
-        })
-      }
-      else if(singleUser){
-          const newAccount={
-              accountNumber:accounts.length+1,
-              firstname:singleUser.firstname,
-              lastname:singleUser.lastname,
-              email:singleUser.email,
-              owner: singleUser.id,
-              type:req.body.type,
-              balance:parseFloat(req.body.amount) || 0.0,
-              status:'active',
-              createdOn:new Date()
-          }
-          accounts.push(newAccount);
-          res.status(200).send({
-              status:200,
-              data:newAccount
-          })
-      }
-      else{
-          res.status(400).send({
-              status:400,
-              error:"User not found"
-          })
-      }
-    }
+class AccountController {
+    static create(req, res) {
 
-    static activate(req,res){
-       const accountNumber=req.params.id;
-       let status;
-       const accountInfo=accounts.find(account=>account.accountNumber===parseInt(accountNumber));
-       console.log(accountNumber);
-       if(accountInfo){
-           const newAccounts=accounts.map(ac=>{
-               if(ac.status==='dormant' && ac.accountNumber===parseInt(accountNumber)) ac.status='active';
-               else if(ac.status==='active' && ac.accountNumber===parseInt(accountNumber)) ac.status='dormant';
-               status=ac.status;
-               return ac;
-           });
+        const singleUser = users.find(user => user.email === req.body.email);
+       
+        if (singleUser) {
+            console.log("hhe")
+            const newAccount = {
+                accountNumber: accounts.length + 1,
+                firstname: singleUser.firstname,
+                lastname: singleUser.lastname,
+                email: singleUser.email,
+                owner: singleUser.id,
+                type: req.body.type,
+                balance: parseFloat(req.body.amount) || 0.0,
+                status: 'active',
+                createdOn: new Date()
+            }
     
-           res.status(200).send({
-               accountNumber:parseInt(accountNumber),
-               status:status
-           });
-       }
-       else{
-           res.status(400).send({
-               status:400,
-               error:"Account not found"
-           });
-       }
+            accounts.push(newAccount);
+            res.status(201).send({
+                status: 201,
+                data: newAccount
+            })
+        } else {
+            return res.status(404).send({
+                status: 404,
+                error: "User not found"
+            })
+        }
+
     }
 
-    static debit(request, res){
-        const account = accounts.find(account=>account.accountNumber===parseInt(request.params.accountNumber));
-        if(!account){
-            return res.status(400).send({
-                status:400,
-                error:"Account not found"
+    static activate(req, res) {
+        const accountNumber = req.params.id;
+        let status;
+        const accountInfo = accounts.find(account => account.accountNumber === parseInt(accountNumber));
+        if (accountInfo) {
+            const newAccounts = accounts.map(ac => {
+                if (ac.status === 'dormant' && ac.accountNumber === parseInt(accountNumber)) { ac.status = 'active'; return status = ac.status; }
+                else if (ac.status === 'active' && ac.accountNumber === parseInt(accountNumber)) { ac.status = 'dormant'; return status = ac.status; }
+
+            });
+
+            res.status(200).send({
+                accountNumber: parseInt(accountNumber),
+                status: status
+            });
+        }
+        else {
+            res.status(404).send({
+                status: 404,
+                error: "Account not found"
+            });
+        }
+    }
+    static viewAllAccount(req, res) {
+        const token = jwt.verify(req.headers.token, process.env.secretKey);
+        console.log(token.isAdmin);
+        if (token.isAdmin === true) {
+            return res.status(200).send({
+                status: 200,
+                data: accounts
+            })
+        } else return res.status(403).send({
+            status: 403,
+            message: "you are not an admin"
+        })
+    }
+
+    static debit(request, res) {
+        const account = accounts.find(account => account.accountNumber === parseInt(request.params.accountNumber));
+        if (!account) {
+            return res.status(404).send({
+                status: 404,
+                error: "Account not found"
             });
         }
         const amount = request.body.amount;
         const oldBalance = account.balance;
-        if(oldBalance<amount){
-            return res.status(400).send({
-                status:400,
-                error:"Insufficient Balance",
+        if (oldBalance < parseFloat(amount)) {
+            return res.status(403).send({
+                status: 403,
+                error: "Insufficient Balance",
             })
         }
         const newBalance = oldBalance - amount;
-        console.log(newBalance);
         account.balance = newBalance;
         const cashier = 1;
         const transaction = {
@@ -109,46 +112,53 @@ class AccountController{
             accountBalance: newBalance,
         };
         res.status(200).send({
-            status:200,
+            status: 200,
             data: response,
         });
     }
 
-    static delete(req, res){
-        const account = accounts.find(account=>account.accountNumber===parseInt(req.params.accountNumber));
-        if(!account){
-            return res.status(400).send({
-                status:400,
-                error:"Account not found"
+    static delete(req, res) {
+        const account = accounts.find(account => account.accountNumber === parseInt(req.params.accountNumber));
+        try {
+            const isOwner = jwt.verify(req.headers.token, process.env.secretKey);
+    
+            if (!account) {
+                return res.status(404).send({
+                    status: 404,
+                    error: "Account not found"
+                });
+            }
+            //check if he is an admin or the owner of the account
+            if (isOwner.isAdmin !== true && isOwner.email !== account.owner)
+                return res.status(403).send({ status: 403, error: "Not allowed to delete this account" });
+
+            // const { accountNumber } = req.params;
+
+            const newAccounts = accounts.splice(accounts.indexOf(account), 1);
+            return res.status(200).send({
+                status: 200,
+                message: "successfully deleted!",
+                data: newAccounts
             });
+        } catch (err) {
+            return res.status(401).send({ error: err.message })
         }
-        const {accountNumber}=req.params;
-        //const accountNumber=req.params.accountNumber;
-
-        
-        const newAccounts=accounts.filter(account=>account.accountNumber!==parseInt(accountNumber));
-
-
-        return res.status(200).send({
-            status:200,
-            data:newAccounts
-        });
     }
 
-    static credit(request, res){
-        const account = accounts.find(account=>account.accountNumber===parseInt(request.params.accountNumber));
-        if(!account){
-            return res.status(400).send({
-                status:400,
-                error:"Account not found"
+    static credit(request, res) {
+        const account = accounts.find(account => account.accountNumber === parseInt(request.params.accountNumber));
+        if (!account) {
+            return res.status(404).send({
+                status: 404,
+                error: "Account not found"
             });
         }
         const amount = request.body.amount;
         const oldBalance = account.balance;
-        if(0>amount){
-            return res.status(400).send({
-                status:400,
-                error:"your Amount is not allowed heree!",
+        if (0 > amount) {
+            return res.status(403).send({
+                status: 403,
+                error: "your Amount is not allowed heree!",
             })
         }
         const newBalance = parseFloat(oldBalance) + parseFloat(amount);
@@ -169,15 +179,16 @@ class AccountController{
         const response = {
             transactionId: transaction.id,
             accountNumber: account.accountNumber,
-            amount,
-            cashier,
             transactionType: "credit",
             accountBalance: newBalance,
+            amount,
+            cashier
+
         };
         res.status(200).send({
-            status:200,
+            status: 200,
             data: response,
-        });   
+        });
     }
 
 }
