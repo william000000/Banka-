@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "stable"
+  - stable
 script:
-  - npm test
+  - npm run test
   after_success:
-    -npm run coverage 
+  - npm run coverage
