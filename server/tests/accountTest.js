@@ -96,7 +96,7 @@ describe('Bank account testing', () => {
       });
   })
 
-  it('should not be able to activate or deactivate when user not exist', (done) => {
+  it('should not be able to activate or deactivate when user not exists', (done) => {
     const newAccount = {
       id: -2
     };
