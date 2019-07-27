@@ -61,9 +61,6 @@ class AuthController {
                 newUser
             }
         })
-
-
-    }
 }
 
 export default AuthController;
