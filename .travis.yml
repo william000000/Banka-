@@ -1,10 +1,15 @@
 git:
   depth: 25
-  quiet: true
-  
+  quiet: false
+
 language: node_js
 node_js:
   - stable
+
+branches:
+  only:
+  - develop
+  
 script:
   - npm run test
   after_success:
