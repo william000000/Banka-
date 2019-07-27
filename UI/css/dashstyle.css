@@ -239,6 +239,8 @@ html{
 		width: 70%;
 		font-size: 18px;
 		margin-left: 10%;
+		border: #888;
+		background-color: rgb(235, 228, 228);
 
 	}
 	.label{
@@ -249,16 +251,18 @@ html{
 	}
 	#close{
 		float: right;
-		border-radius: 300px;
+		border-radius: 200px;
 		background: gray;
 		color: white;
 		font-size: 15pt;
 		font-weight: 800;
+		width: 17px;
 		/* padding: 10px; */
 	}
 	#close:hover{
 		background: rgb(121, 87, 87);
 		color: black;
+		cursor: pointer;
 	}
 	#btn-position{		
 		margin-left: 30%;
@@ -275,3 +279,6 @@ html{
 	#menu{
 		display: none;
 	}
+	/* tr:nth-child(even) {background: #CCC}
+	tr:nth-child(odd) {background: #FFF} */
+	tr:hover td {bg-color:white; color:black;cursor: pointer;}

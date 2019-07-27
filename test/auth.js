@@ -1,6 +1,11 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
+<<<<<<< HEAD:test/auth.js
+import app from "../server/app";
+
+=======
 import app from "../app";
+>>>>>>> develop:server/tests/auth.js
 chai.use(chaiHttp);
 chai.should();
 
