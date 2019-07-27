@@ -1,5 +1,5 @@
 import chai from 'chai';
-import chaiHttp from './node_modules/chai-http';
+import chaiHttp from 'chai-http';
 import server from '../app';
 
 chai.use(chaiHttp);
