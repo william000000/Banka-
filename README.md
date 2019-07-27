@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/william000000/Banka-.svg?branch=develop)](https://travis-ci.org/william000000/Banka-)
+[![Coverage Status](https://coveralls.io/repos/github/william000000/Banka-/badge.svg?branch=develop)](https://coveralls.io/github/william000000/Banka-?branch=develop)
 # Banka-
 Banka is a banking application that powers banking operations like account
 creation, customer deposit and withdrawals. This application is going to help bank activities and users where s/he can signup and create bank accounts online, but must visit the branch to withdraw or
@@ -42,6 +44,7 @@ deposit money.
 | POST        | /api/v1/accounts/:accountNumber/debit      | To Debit Bank Account         |
 | POST        | /api/v1/accounts/:accountNumber/credit     | To Credit Bank Account        |
 | DELETE      | /api/v1/accounts/:accountNumber            | To Delete Bank Account        |
+| GET         | /api/v1/accounts/all                       | To get all bank accounts      |
 --------------------------------------------------------------------------------------------
 
 ## Technologies Used
