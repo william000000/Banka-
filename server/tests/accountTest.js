@@ -191,7 +191,7 @@ describe('Bank account testing', () => {
   it("should view all account when he is admin ", done => {
     chai.request(server)
       .get(`/api/v1/accounts/all`)
-      .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDA1NDg0Nn0.kJpYd_-Vr9p0s3Wk5j9dVkaJqZl3uQUxL3ImPh30K6s')
+      .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NzM3NDc3Nn0.r_J0WsSf3F4JdRdtqDeeOCZJaL9584HV1CiQAnbBFXY')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
@@ -201,7 +201,7 @@ describe('Bank account testing', () => {
   it("should not view all account when he is not an admin ", done => {
      chai.request(server)
        .get(`/api/v1/accounts/all`)
-       .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTY0MDE0NzQ5fQ.qlcFOicH3jPlYTJyxyuZkh5ePaqUv5eMVKPjFRqITBo')
+       .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY3Mzc0ODcwfQ.SPspreAlLNhOPODKjQ7vTR5depyBJyw2aKiIa3mBFes')
        .end((err, res) => {
          res.should.have.status(403);
          res.body.should.be.an('object');
@@ -215,7 +215,7 @@ describe('Bank account testing', () => {
 
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY0MjMwOTI5fQ.8wPkrJhYYvz7JY2wIG5Chdp0qCgMdQf3Id8QgiVUWIw')
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY3Mzc0ODcwfQ.SPspreAlLNhOPODKjQ7vTR5depyBJyw2aKiIa3mBFes')
       .end((err, res) => {
         res.should.have.status(403);
         res.body.should.be.an('object');
@@ -228,7 +228,7 @@ describe('Bank account testing', () => {
 
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', 'JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY0MjMwOTI5fQ.8wPkrJhYYvz7JY2wIG5Chdp0qCgMdQf3Id8QgiVUWIw')
+      .set('token', 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9wiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY3Mzc0ODcwfQ.SPspreAlLNhOPODKjQ7vTR5depyBJyw2aKiIa3mBFes')
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.be.an('object');
@@ -236,11 +236,11 @@ describe('Bank account testing', () => {
       });
   })
   it("should not delete an account when id not exist", done => {
-    const accountNumber = -1;
+    const accountNumber = -0;
 
     chai.request(server)
       .delete(`/api/v1/accounts/${accountNumber}`)
-      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTY0MDE0NzQ5fQ.qlcFOicH3jPlYTJyxyuZkh5ePaqUv5eMVKPjFRqITBo')
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NzM3NDk1MX0.Skt95aOIekSCMkbbaEz-38d8GGvqnZRkdaluUVdMC2g')
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.an('object');
@@ -253,7 +253,7 @@ describe('Bank account testing', () => {
   
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDIyOTc0MX0.RNg3BBf3Q19-2XKzMA2vhU_h7wWorWhwdf1K959yIAI')
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NzM3NDk1MX0.Skt95aOIekSCMkbbaEz-38d8GGvqnZRkdaluUVdMC2g')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
@@ -264,7 +264,7 @@ describe('Bank account testing', () => {
     const account = 1;
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDIyOTc0MX0.RNg3BBf3Q19-2XKzMA2vhU_h7wWorWhwdf1K959yIAI')
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NzM3NDk1MX0.Skt95aOIekSCMkbbaEz-38d8GGvqnZRkdaluUVdMC2g')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
