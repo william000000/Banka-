@@ -59,7 +59,6 @@ class AccountController {
     }
     static viewAllAccount(req, res) {
         const token = jwt.verify(req.headers.token, process.env.secretKey);
-        console.log(token.isAdmin);
         if (token.isAdmin === true) {
             return res.status(200).send({
                 status: 200,
@@ -160,7 +159,6 @@ class AccountController {
             })
         }
         const newBalance = parseFloat(oldBalance) + parseFloat(amount);
-        console.log(newBalance);
         account.balance = newBalance;
         const cashier = 1;
         const transaction = {

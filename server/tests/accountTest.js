@@ -189,10 +189,9 @@ describe('Bank account testing', () => {
   })
 
   it("should view all account when he is admin ", done => {
-   const Token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDA1NDg0Nn0.kJpYd_-Vr9p0s3Wk5j9dVkaJqZl3uQUxL3ImPh30K6s';
     chai.request(server)
       .get(`/api/v1/accounts/all`)
-      .set('token',Token)
+      .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDA1NDg0Nn0.kJpYd_-Vr9p0s3Wk5j9dVkaJqZl3uQUxL3ImPh30K6s')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
@@ -200,10 +199,9 @@ describe('Bank account testing', () => {
       });
   })
   it("should not view all account when he is not an admin ", done => {
-    const Token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTY0MDE0NzQ5fQ.qlcFOicH3jPlYTJyxyuZkh5ePaqUv5eMVKPjFRqITBo';
      chai.request(server)
        .get(`/api/v1/accounts/all`)
-       .set('token',Token)
+       .set('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTY0MDE0NzQ5fQ.qlcFOicH3jPlYTJyxyuZkh5ePaqUv5eMVKPjFRqITBo')
        .end((err, res) => {
          res.should.have.status(403);
          res.body.should.be.an('object');
@@ -214,11 +212,10 @@ describe('Bank account testing', () => {
   
   it("should not delete an account whn he is not an admin or the owner", done => {
     const account = 2;
-    const tokn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY0MjMwOTI5fQ.8wPkrJhYYvz7JY2wIG5Chdp0qCgMdQf3Id8QgiVUWIw'
 
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', tokn)
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY0MjMwOTI5fQ.8wPkrJhYYvz7JY2wIG5Chdp0qCgMdQf3Id8QgiVUWIw')
       .end((err, res) => {
         res.should.have.status(403);
         res.body.should.be.an('object');
@@ -228,11 +225,10 @@ describe('Bank account testing', () => {
 
   it("should not delete an account whn invalid token", done => {
     const account = 1;
-    const tokn = 'JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY0MjMwOTI5fQ.8wPkrJhYYvz7JY2wIG5Chdp0qCgMdQf3Id8QgiVUWIw'
 
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', tokn)
+      .set('token', 'JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNTY0MjMwOTI5fQ.8wPkrJhYYvz7JY2wIG5Chdp0qCgMdQf3Id8QgiVUWIw')
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.be.an('object');
@@ -241,11 +237,10 @@ describe('Bank account testing', () => {
   })
   it("should not delete an account when id not exist", done => {
     const accountNumber = -1;
-    const tokn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTY0MDE0NzQ5fQ.qlcFOicH3jPlYTJyxyuZkh5ePaqUv5eMVKPjFRqITBo';
 
     chai.request(server)
       .delete(`/api/v1/accounts/${accountNumber}`)
-      .set('token', tokn)
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNTY0MDE0NzQ5fQ.qlcFOicH3jPlYTJyxyuZkh5ePaqUv5eMVKPjFRqITBo')
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.an('object');
@@ -255,10 +250,10 @@ describe('Bank account testing', () => {
 
   it("should delete an account", done => {
     const account = 2;
-    const tokn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDIyOTc0MX0.RNg3BBf3Q19-2XKzMA2vhU_h7wWorWhwdf1K959yIAI'
+  
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', tokn)
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDIyOTc0MX0.RNg3BBf3Q19-2XKzMA2vhU_h7wWorWhwdf1K959yIAI')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
@@ -267,10 +262,9 @@ describe('Bank account testing', () => {
   })
   it("should delete any account regardless of owner when he is an admin", done => {
     const account = 1;
-    const tokn = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDIyOTc0MX0.RNg3BBf3Q19-2XKzMA2vhU_h7wWorWhwdf1K959yIAI'
     chai.request(server)
       .delete(`/api/v1/accounts/${account}`)
-      .set('token', tokn)
+      .set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbGllQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NDIyOTc0MX0.RNg3BBf3Q19-2XKzMA2vhU_h7wWorWhwdf1K959yIAI')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
